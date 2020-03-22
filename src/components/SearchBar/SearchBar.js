@@ -6,7 +6,6 @@ export function SearchBar(props) {
   const query = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${searchQuery}&key=AIzaSyBbic_3q36LIzd1DK-X6Ghn3-rApxOX1pI`;
   const submitQuery = e => {
     e.preventDefault();
-    console.log(searchQuery);
     fetch(query)
       .then(res => res.json())
       .then(res => props.setVideoList(res.items));

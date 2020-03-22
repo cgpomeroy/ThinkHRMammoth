@@ -6,8 +6,6 @@ import { IndividualVideoResult } from "./components/VideoListings/IndividualVide
 
 function App() {
   const [videoList, setVideoList] = useState([]);
-
-  useEffect(() => console.log(videoList));
   return (
     <div className="App">
       <header className="App-header">ThinkHR/Mammoth Code Test</header>
