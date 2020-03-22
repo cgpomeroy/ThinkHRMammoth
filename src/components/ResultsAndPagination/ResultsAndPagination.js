@@ -1,4 +1,5 @@
 import React from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export function ResultsAndPagintation(props) {
   return (
@@ -11,7 +12,11 @@ export function ResultsAndPagintation(props) {
       }}
     >
       <div>Total results: {props.results}</div>
-      <div>Pages</div>
+      <div>
+        <FaChevronLeft />
+        {props.results > 0 ? `1/${props.results / 5}` : "0/0"}
+        <FaChevronRight />
+      </div>
     </div>
   );
 }

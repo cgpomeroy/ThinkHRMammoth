@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { tsPropertySignature } from "@babel/types";
+import { FiSearch } from "react-icons/fi";
 
 export function SearchBar(props) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,15 +18,58 @@ export function SearchBar(props) {
         display: "flex",
         flexDirection: "row",
         padding: "1em",
-        justifyContent: "center"
+        justifyContent: "center",
+        alignContent: "center"
       }}
     >
-      <form onSubmit={e => submitQuery(e)}>
-        <input
-          val={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-        />
-        <button type="submit">Search</button>
+      <form onSubmit={e => submitQuery(e)} style={{ width: "100%" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <div
+            style={{
+              border: "1px black solid",
+              height: "37px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "3px"
+            }}
+          >
+            <FiSearch
+              style={{ padding: "0 1em" }}
+              onClick={e => submitQuery(e)}
+            />
+            <input
+              val={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              style={{
+                border: "none",
+                outline: "none",
+                height: "80%",
+                width: "240px"
+              }}
+            />
+          </div>
+          <button
+            style={{
+              height: "40px",
+              width: "120px",
+              backgroundColor: "black",
+              color: "white",
+              border: "none",
+              borderRadius: 3,
+              marginLeft: -5
+            }}
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

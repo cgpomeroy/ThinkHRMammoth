@@ -1,6 +1,36 @@
 import React from "react";
 
 export function IndividualVideoResult(props) {
+  function formatDate(d) {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+
+    const day = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
+
+    return `${day} ${month} ${year}`.toUpperCase();
+  }
+  function buildLink(kind) {
+    const isVideo = kind.indexOf("#video") > -1;
+    if (isVideo) {
+      return `https://www.youtube.com/watch?v=${props.linkId}`;
+    } else {
+      return `https://www.youtube.com/channel/${props.linkId}`;
+    }
+  }
   return (
     <div
       className="videoListing"
@@ -8,13 +38,12 @@ export function IndividualVideoResult(props) {
         display: "flex",
         flexWrap: "wrap",
         border: "1px black solid",
-        padding: "1em",
-        margin: "0 1em"
+        margin: ".75em 0",
+        padding: "1em"
       }}
     >
       <div
         style={{
-          height: "100%",
           flex: 2,
           display: "flex",
           justifyContent: "center",
@@ -23,10 +52,13 @@ export function IndividualVideoResult(props) {
         }}
       >
         {props.image ? (
-          <img
-            src={props.image}
-            style={{ maxHeight: "20vh", height: "100%" }}
-          />
+          <div>
+            <img
+              alt={`${props.title} thumbnail`}
+              src={props.image}
+              style={{ maxHeight: "20vh", height: "100%", minHeight: "200px" }}
+            />
+          </div>
         ) : (
           "No preview available"
         )}
@@ -41,14 +73,15 @@ export function IndividualVideoResult(props) {
           textAlign: "left"
         }}
       >
-        <div style={{ flex: 2, maxLines: 1, minHeight: "20%" }}>
+        <div
+          style={{
+            flex: 2
+          }}
+        >
           <h3
             style={{
               margin: 0,
-              fontSize: "1.5em",
-              whiteSpace: "nowrap",
-              textOverflow: "ellipsis",
-              overflow: "hidden"
+              fontSize: "1.5em"
             }}
           >
             {props.title || "No Title"}
@@ -58,7 +91,8 @@ export function IndividualVideoResult(props) {
           style={{
             flex: 3,
             overflow: "hidden",
-            minHeight: "30%"
+            minHeight: "30%",
+            paddingTop: "1em"
           }}
         >
           {props.description || "No Description"}
@@ -68,16 +102,31 @@ export function IndividualVideoResult(props) {
             flex: 3,
             justifyContent: "middle",
             display: "flex",
-            alignItems: "center"
+            alignItems: "center",
+            paddingTop: "1em"
           }}
         >
           <div>
-            <a href={props.link || ""}>
-              <button style={{ height: "40px", width: "60px" }}>View</button>
+            <a href={buildLink(props.kind) || ""}>
+              <button
+                style={{
+                  height: "40px",
+                  width: "120px",
+                  backgroundColor: "black",
+                  color: "white",
+                  border: "none",
+                  borderRadius: 3
+                }}
+              >
+                View
+              </button>
             </a>
           </div>
         </div>
-        <div style={{ flex: 1 }}>{props.date || "No Date"}</div>
+        <div style={{ flex: 1, paddingTop: "1em" }}>
+          {`${formatDate(new Date(props.date))} by ${props.channelTitle}` ||
+            "No Date"}
+        </div>
       </div>
     </div>
   );

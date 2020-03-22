@@ -6,29 +6,37 @@ import { IndividualVideoResult } from "./components/VideoListings/IndividualVide
 
 function App() {
   const [videoList, setVideoList] = useState([]);
+
   useEffect(() => console.log(videoList));
   return (
     <div className="App">
       <header className="App-header">ThinkHR/Mammoth Code Test</header>
       <SearchBar setVideoList={setVideoList} />
       <ResultsAndPagintation results={videoList.length} />
-      <div className="videoListingsContainer" style={{ padding: "1em 0" }}>
-        {videoList.length > 0
-          ? videoList.map(res => (
-              <IndividualVideoResult
-                key={res.snippet.etag}
-                title={res.snippet.title || false}
-                description={res.snippet.description || false}
-                image={res.snippet.thumbnails.high.url || false}
-                link="https://www.timbers.com"
-                date={res.snippet.publishedAt || false}
-                videoList={videoList}
-              />
-            ))
-          : "No results."}
+      <div
+        className="videoListingsContainer"
+        style={{
+          margin: "1em"
+        }}
+      >
+        {videoList.length > 0 ? (
+          videoList.map((res, i) => (
+            <IndividualVideoResult
+              key={i}
+              kind={res.id.kind}
+              title={res.snippet.title || false}
+              description={res.snippet.description || false}
+              image={res.snippet.thumbnails.high.url || false}
+              linkId={res.id.channelId || res.id.videoId}
+              date={res.snippet.publishedAt || false}
+              channelTitle={res.snippet.channelTitle || false}
+            />
+          ))
+        ) : (
+          <div style={{ padding: "1em" }}>No results.</div>
+        )}
       </div>
     </div>
   );
 }
-
 export default App;
