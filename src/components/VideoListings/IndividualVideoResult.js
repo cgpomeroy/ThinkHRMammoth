@@ -1,5 +1,13 @@
 import React from "react";
 
+/**
+ * IndividualVideoResult.js is used to render individual video results.
+ *
+ * The component contains two functions for
+ * - Formatting dates (12-33)
+ * - Changing links based on whether the result is a video or a channel (34-40)
+ */
+
 export default function IndividualVideoResult(props) {
   function formatDate(d) {
     const months = [
