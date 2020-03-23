@@ -7,9 +7,19 @@ export function SearchBar(props) {
 
   const submitQuery = e => {
     e.preventDefault();
+    props.setLoadingResults(true);
+    props.setError(false);
     fetch(query)
       .then(res => res.json())
-      .then(res => props.setVideoList(res.items), props.setFirstSearch(false));
+      .then(res => {
+        props.setVideoList(res.items);
+        props.setFirstSearch(false);
+        props.setLoadingResults(false);
+      })
+      .catch(() => {
+        props.setLoadingResults(false);
+        props.setError(true);
+      });
   };
   return (
     <div

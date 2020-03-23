@@ -2,42 +2,33 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { ResultsAndPagintation } from "./components/ResultsAndPagination/ResultsAndPagination";
-import { IndividualVideoResult } from "./components/VideoListings/IndividualVideoResult";
+import { VideoListings } from "./components/VideoListings/VideoListings";
 
 function App() {
   const [videoList, setVideoList] = useState([]);
   const [firstSearch, setFirstSearch] = useState(true);
+  const [loadingSearchResults, setLoadingResults] = useState(false);
+  const [error, setError] = useState(false);
 
   return (
     <div className="App">
       <header className="App-header">ThinkHR/Mammoth Code Test</header>
-      <SearchBar setVideoList={setVideoList} setFirstSearch={setFirstSearch} />
-      {!firstSearch ? (
+      <SearchBar
+        setVideoList={setVideoList}
+        setFirstSearch={setFirstSearch}
+        setLoadingResults={setLoadingResults}
+        setError={setError}
+      />
+      {loadingSearchResults ? <div>Loading...</div> : null}
+      {error ? (
+        <div style={{ color: "red" }}>
+          There was a problem retreiving your results. Please try again later.
+        </div>
+      ) : null}
+      {!firstSearch && !loadingSearchResults ? (
         <div>
           <ResultsAndPagintation results={videoList.length} />
-          <div
-            className="videoListingsContainer"
-            style={{
-              margin: "1em"
-            }}
-          >
-            {videoList.length > 0 ? (
-              videoList.map((res, i) => (
-                <IndividualVideoResult
-                  key={i}
-                  kind={res.id.kind}
-                  title={res.snippet.title || false}
-                  description={res.snippet.description || false}
-                  image={res.snippet.thumbnails.high.url || false}
-                  linkId={res.id.channelId || res.id.videoId}
-                  date={res.snippet.publishedAt || false}
-                  channelTitle={res.snippet.channelTitle || false}
-                />
-              ))
-            ) : (
-              <div style={{ padding: "1em" }}>No results.</div>
-            )}
-          </div>
+          <VideoListings videoList={videoList} />
         </div>
       ) : (
         ""

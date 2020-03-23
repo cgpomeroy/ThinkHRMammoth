@@ -1,6 +1,6 @@
 import React from "react";
 
-export function IndividualVideoResult(props) {
+export default function IndividualVideoResult(props) {
   function formatDate(d) {
     const months = [
       "January",
