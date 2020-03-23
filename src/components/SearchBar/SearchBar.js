@@ -4,11 +4,12 @@ import { FiSearch } from "react-icons/fi";
 export function SearchBar(props) {
   const [searchQuery, setSearchQuery] = useState("");
   const query = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${searchQuery}&key=AIzaSyBbic_3q36LIzd1DK-X6Ghn3-rApxOX1pI`;
+
   const submitQuery = e => {
     e.preventDefault();
     fetch(query)
       .then(res => res.json())
-      .then(res => props.setVideoList(res.items));
+      .then(res => props.setVideoList(res.items), props.setFirstSearch(false));
   };
   return (
     <div
@@ -44,14 +45,15 @@ export function SearchBar(props) {
               onClick={e => submitQuery(e)}
             />
             <input
-              val={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
+              placeholder="Enter your search here..."
               style={{
                 border: "none",
                 outline: "none",
                 height: "80%",
                 width: "240px"
               }}
+              val={searchQuery}
             />
           </div>
           <button
