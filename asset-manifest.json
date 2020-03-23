@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ThinkHRMammoth/static/css/main.87c2b7fe.chunk.css",
+    "main.js": "/ThinkHRMammoth/static/js/main.8b2de9b9.chunk.js",
+    "main.js.map": "/ThinkHRMammoth/static/js/main.8b2de9b9.chunk.js.map",
+    "runtime-main.js": "/ThinkHRMammoth/static/js/runtime-main.56b4d62c.js",
+    "runtime-main.js.map": "/ThinkHRMammoth/static/js/runtime-main.56b4d62c.js.map",
+    "static/js/2.2a1dbb6a.chunk.js": "/ThinkHRMammoth/static/js/2.2a1dbb6a.chunk.js",
+    "static/js/2.2a1dbb6a.chunk.js.map": "/ThinkHRMammoth/static/js/2.2a1dbb6a.chunk.js.map",
+    "index.html": "/ThinkHRMammoth/index.html",
+    "precache-manifest.d2021019f80a79fbe330c46de2242f3b.js": "/ThinkHRMammoth/precache-manifest.d2021019f80a79fbe330c46de2242f3b.js",
+    "service-worker.js": "/ThinkHRMammoth/service-worker.js",
+    "static/css/main.87c2b7fe.chunk.css.map": "/ThinkHRMammoth/static/css/main.87c2b7fe.chunk.css.map",
+    "static/js/2.2a1dbb6a.chunk.js.LICENSE.txt": "/ThinkHRMammoth/static/js/2.2a1dbb6a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.56b4d62c.js",
+    "static/js/2.2a1dbb6a.chunk.js",
+    "static/css/main.87c2b7fe.chunk.css",
+    "static/js/main.8b2de9b9.chunk.js"
+  ]
+}
