@@ -43,11 +43,9 @@ export default function IndividualVideoResult(props) {
       }}
     >
       <div
+        className="flex-center"
         style={{
           flex: 2,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           fontWeight: "bold"
         }}
       >

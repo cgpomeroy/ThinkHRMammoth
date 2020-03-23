@@ -23,30 +23,19 @@ export function SearchBar(props) {
   };
   return (
     <div
-      className="searchBar"
+      className="searchBar center-flex"
       style={{
-        display: "flex",
         flexDirection: "row",
-        padding: "1em",
-        justifyContent: "center",
-        alignContent: "center"
+        padding: "1em"
       }}
     >
       <form onSubmit={e => submitQuery(e)} style={{ width: "100%" }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
+        <div className="center-flex">
           <div
+            className="center-flex"
             style={{
               border: "1px black solid",
               height: "37px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               borderRadius: "3px"
             }}
           >
